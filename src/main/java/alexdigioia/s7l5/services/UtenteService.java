@@ -7,9 +7,12 @@ import alexdigioia.s7l5.exceptions.NotFoundException;
 import alexdigioia.s7l5.payloads.Utente.NewUtenteDTO;
 import alexdigioia.s7l5.repositories.UtenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.List;
 import java.util.UUID;
 
 public class UtenteService {
@@ -36,9 +39,14 @@ public class UtenteService {
         return this.utenteRepository.save(newUtente);
     }
 
-    public List<Utente> findAll() {
-        return this.utenteRepository.findAll();
+    //public List<Utente> findAll() {
+    //    return this.utenteRepository.findAll();
+    //}
+    public Page<Utente> findAll(int page, int size, String sortBy) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
+        return utenteRepository.findAll(pageable);
     }
+
 
     public Utente findById(UUID id) {
         return this.utenteRepository.findById(id).orElseThrow(() -> new NotFoundException(id));

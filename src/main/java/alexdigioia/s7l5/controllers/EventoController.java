@@ -52,7 +52,7 @@ public class EventoController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<Void> deleteEvento(@PathVariable UUID id) {
-        eventoService.deleteEvento(id);
+        eventoService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 }

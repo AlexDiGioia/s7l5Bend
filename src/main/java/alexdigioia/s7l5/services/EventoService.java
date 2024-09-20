@@ -52,7 +52,7 @@ public class EventoService {
         return eventoRepository.save(evento);
     }
 
-    public void deleteEvento(UUID id) {
+    public void deleteById(UUID id) {
         if (!eventoRepository.existsById(id)) {
             throw new NotFoundException(id);
         }
