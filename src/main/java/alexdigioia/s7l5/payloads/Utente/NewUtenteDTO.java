@@ -14,6 +14,8 @@ public record NewUtenteDTO(
         String email,
         @NotEmpty(message = "La password è obbligatoria")
         @Size(min = 4, message = "La password deve avere almeno 4 caratteri")
-        //  @Pattern() Permette di inserire una Regular Expression per validare praticamente qualsiasi cosa (es. PW fatte in una certa maniera)
-        String password) {
+        String password,
+        @NotEmpty(message = "Il ruolo è obblicatorio")
+        String ruolo
+) {
 }
