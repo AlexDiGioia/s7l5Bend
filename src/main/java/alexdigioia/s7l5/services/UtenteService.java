@@ -37,7 +37,7 @@ public class UtenteService {
         } else {
             throw new BadRequestException("ruolo non valido, inserisci UTENTE o ORGANIZZATORE");
         }
-        Utente newUtente = new Utente(body.nome(), body.surname(), body.surname(), bcrypt.encode(body.password()), newRuolo);
+        Utente newUtente = new Utente(body.nome(), body.cognome(), body.email(), bcrypt.encode(body.password()), newRuolo);
         return this.utenteRepository.save(newUtente);
     }
 

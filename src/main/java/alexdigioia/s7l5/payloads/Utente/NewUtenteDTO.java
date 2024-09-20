@@ -9,7 +9,7 @@ public record NewUtenteDTO(
         String nome,
         @NotEmpty(message = "Il cognome è obbligatorio")
         @Size(min = 3, max = 40, message = "Il cognome deve essere compreso tra 3 e 40 caratteri")
-        String surname,
+        String cognome,
         @NotEmpty(message = "L'email è obbligatoria")
         String email,
         @NotEmpty(message = "La password è obbligatoria")
